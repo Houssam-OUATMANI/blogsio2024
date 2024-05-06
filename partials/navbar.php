@@ -10,7 +10,7 @@
                         Mon compte
                     </summary>
                     <ul class="p-2 bg-base-100 rounded-t-none">
-                        <li><a>Inscription</a></li>
+                        <li><a href="pages/inscription.php">Inscription</a></li>
                         <li><a>Connexion</a></li>
                     </ul>
                 </details>
