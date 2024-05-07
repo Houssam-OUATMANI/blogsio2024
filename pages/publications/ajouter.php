@@ -26,6 +26,11 @@ if($http_method === "POST") {
     <button class="btn btn-secondary">Ajouter</button>
 </form>
 
+
+<script>
+    const simplemde = new SimpleMDE({ element: document.querySelector("textarea") });
+</script>
+
 <?php
 unset($_SESSION["errors"]);
 unset($_SESSION["old"]);
