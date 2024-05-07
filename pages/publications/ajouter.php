@@ -1,7 +1,8 @@
 
 <?php
 require_once "../../partials/header.php";
-
+require_once "../../middlewares/auth-middleware.php";
+auth_middleware()
 ?>
 <?php require_once "../../components/input.php" ;?>
 
