@@ -3,6 +3,14 @@
 <?php require_once "../components/input.php" ;?>
 <h1 class="text-4xl text-center">Page de connexion</h1>
 
+<?php
+$http_method = $_SERVER["REQUEST_METHOD"];
+
+if($http_method === "POST") {
+    require_once "../services/auth-service.php";
+    handle_connexion();
+}
+?>
 
 
 

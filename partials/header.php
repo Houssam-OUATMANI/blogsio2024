@@ -14,7 +14,8 @@
 <body>
 <main class="container mx-auto">
 <?php require_once "navbar.php";
-require_once "../components/flash.php";
+
+require_once dirname(__DIR__) . "/components/flash.php";
 
 if (isset($_SESSION["error"])) {
     flash_message("error", "alert-error");

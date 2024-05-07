@@ -35,3 +35,34 @@ function handle_inscription() {
 
 
 }
+
+
+
+function handle_connexion() {
+    $uri = $_SERVER["REQUEST_URI"];
+    require_once "../validations/connexion-validator.php";
+    require_once "../models/user-model.php";
+    $data = connexion_validator();
+    if($data === null) {
+        header("Location:$uri");
+        exit();
+    }
+    $user = get_user_by_email($data["email"]);
+
+    if(!$user) {
+        $_SESSION["error"] = "Cet email n'est associé à aucun un compte";
+        header("Location:/blog/pages/connexion.php");
+        exit();
+    }
+    if(!password_verify($data["password"], $user["password"])) {
+        $_SESSION["error"] = "Le mot de passe est incorrecte";
+        header("Location:/blog/pages/connexion.php");
+        exit();
+    }
+
+    $_SESSION["user"] = $user;
+    $_SESSION["connected"] = true;
+    $_SESSION["success"] = "Tu es connecté";
+    header("Location:/blog");
+    exit();
+}
