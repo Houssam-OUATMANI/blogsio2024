@@ -6,16 +6,9 @@
 $http_method = $_SERVER["REQUEST_METHOD"];
 
 if($http_method === "POST") {
-    $uri = $_SERVER["REQUEST_URI"];
-    require_once "../validations/inscription-validator.php";
-    $data = inscription_validator();
-    if($data === null) {
-        header("Location:$uri");
-        exit();
-    }
-
+    require_once "../services/auth-service.php";
+    handle_inscription();
 }
-
 ?>
 
 
