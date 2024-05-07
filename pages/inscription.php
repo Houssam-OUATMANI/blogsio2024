@@ -1,4 +1,9 @@
-<?php require_once "../partials/header.php"; ?>
+<?php
+require_once "../partials/header.php";
+require_once "../middlewares/guest-middleware.php";
+guest_middleware();
+
+?>
 <?php require_once "../components/input.php" ;?>
 <h1 class="text-4xl text-center">Page d'inscription</h1>
 
