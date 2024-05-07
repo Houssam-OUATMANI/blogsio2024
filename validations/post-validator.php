@@ -18,7 +18,7 @@ function post_validator() {
     if(empty($thumbnail["name"])) {
         $_SESSION["errors"]["thumbnail"] = "Le champs miniature est obligatoire";
     }
-    if ($_SESSION["errors"]) {
+    if (isset($_SESSION["errors"])) {
         $_SESSION["old"]["title"] = $title;
         $_SESSION["old"]["content"] = $content;
         return null;
