@@ -12,6 +12,7 @@ if($http_method === "POST") {
 ?>
 
 
+
 <form class="w-2/3 mx-auto" action="" method="POST">
     <?php html_input("text", "Ton prénom", "prénom", "firstname", $_SESSION["old"]["firstname"] ?? ''); ?>
     <?php html_input("text", "Ton nom", "nom", "lastname",  $_SESSION["old"]["lastname"] ?? ''); ?>

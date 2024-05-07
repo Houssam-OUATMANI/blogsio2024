@@ -11,7 +11,7 @@
                     </summary>
                     <ul class="p-2 bg-base-100 rounded-t-none">
                         <li><a href="pages/inscription.php">Inscription</a></li>
-                        <li><a>Connexion</a></li>
+                        <li><a href="pages/connexion.php">Connexion</a></li>
                     </ul>
                 </details>
             </li>

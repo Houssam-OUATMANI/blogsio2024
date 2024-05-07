@@ -14,3 +14,15 @@
 <body>
 <main class="container mx-auto">
 <?php require_once "navbar.php";
+require_once "../components/flash.php";
+
+if (isset($_SESSION["error"])) {
+    flash_message("error", "alert-error");
+}
+
+if (isset($_SESSION["success"])) {
+    flash_message("success", "alert-success");
+}
+
+
+

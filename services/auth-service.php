@@ -11,7 +11,9 @@ function handle_inscription() {
 
     $user = get_user_by_email($data["email"]);
     if($user) {
-        // *** Arreter le processus et on notifie le client
+        $_SESSION["error"] = "Cet email est déjà associé à un compte";
+        header("Location:/blog/pages/inscription.php");
+        exit();
     }
 
     else {
@@ -20,12 +22,13 @@ function handle_inscription() {
         if ($success) {
             $_SESSION["success"] = "Inscription validée";
             header("Location:/blog/pages/connexion.php");
+            exit();
         }
         else {
             $_SESSION["error"] = "Erreur lors de l'inscription";
             header("Location:/blog/pages/inscription.php");
+            exit();
         }
-        exit();
     }
 
 
