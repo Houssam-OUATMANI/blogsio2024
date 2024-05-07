@@ -12,18 +12,18 @@ auth_middleware()
 $http_method = $_SERVER["REQUEST_METHOD"];
 
 if($http_method === "POST") {
-    //require_once "../../services/post-service.php";
+    require_once "../../services/post-service.php";
+    handle_store_post();
 
 }
 ?>
 
 
 
-<form class="w-2/3 mx-auto" action="" method="POST">
+<form class="w-2/3 mx-auto" action="" method="POST" enctype="multipart/form-data">
     <?php html_input("text", "Titre", "Titre de l'article", "title",  $_SESSION["old"]["title"] ?? ''); ?>
     <?php html_input("file", "Miniature", "Miniature", "thumbnail", ''); ?>
     <?php html_input("textarea", "Contenu", "Contenu", "content",  $_SESSION["old"]["content"] ?? ''); ?>
-
     <button class="btn btn-secondary">Ajouter</button>
 </form>
 
