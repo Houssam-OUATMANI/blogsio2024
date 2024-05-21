@@ -1,9 +1,9 @@
 <div class="navbar bg-base-100">
     <div class="flex-1">
-        <a class="btn btn-ghost text-xl">Mon blog </a>
+        <a href="index.php" class="btn btn-ghost text-xl">Mon blog </a>
     </div>
     <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
+        <ul class="menu menu-horizontal items-center px-1">
            <?php if(isset($_SESSION["connected"]) && $_SESSION["connected"] === true) :?>
 
                <li><a href="pages/publications/ajouter.php">Publier</a></li>
