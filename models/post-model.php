@@ -9,5 +9,5 @@ function store_post(array $data) {
 
         $query = "INSERT INTO b2024sio.posts(title, content, user_id, thumbnail) VALUES (?, ? , ? , ?)";
         $stmt = $pdo->prepare($query);
-        return $stmt->execute([$$title, $content, $user_id, $thumbnail]);
+        return $stmt->execute([$title, $content, $user_id, $thumbnail]);
 }
