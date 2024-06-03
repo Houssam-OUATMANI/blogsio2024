@@ -25,9 +25,10 @@ function store_user(array $data) {
 }
 
 function get_user_info() {
-
-    return "USER CONNECTED";
-    // CODE
-
-    // return user
+    session_start();
+    $pdo = get_pdo();
+    $id = $_SESSION["user"]["id"];
+    $query = "SELECT * FROM b2024sio.users WHERE id = $id";
+    $stmt = $pdo->query($query);
+    return $stmt->fetch();
 }
