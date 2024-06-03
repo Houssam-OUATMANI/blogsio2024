@@ -23,3 +23,11 @@ function store_user(array $data) {
     return $stmt->execute( [$firstname, $lastname, $email, $password]);
 
 }
+
+function get_user_info() {
+
+    return "USER CONNECTED";
+    // CODE
+
+    // return user
+}

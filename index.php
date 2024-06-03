@@ -1,6 +1,8 @@
 <?php require_once  "partials/header.php";
     require_once "models/post-model.php";
 
+
+    var_dump(session_id());
     $count = total_posts()["count"];
     $limit = $_GET["limit"] ?? 10;
     $total_pages = ceil($count/ $limit);
