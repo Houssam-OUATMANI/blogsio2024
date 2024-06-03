@@ -7,28 +7,24 @@ guest_middleware();
 ?>
 <?php require_once "../components/input.php" ;?>
 
-<h1 class="text-4xl text-center">Page de connexion</h1>
 
 <?php
-$http_method = $_SERVER["REQUEST_METHOD"];
+    if($_SERVER["REQUEST_METHOD"] === "POST") {
+        require_once  "../services/password-service.php";
+        handle_forgot_password();
+    }
 
-if($http_method === "POST") {
-    require_once "../services/auth-service.php";
-    handle_connexion();
-}
 ?>
 
+<h1 class="text-4xl text-center">Mot de passe oublie ?</h1>
 
 
 <form class="w-2/3 mx-auto" action="" method="POST">
     <?php html_input("email", "Ton email", "email", "email",  $_SESSION["old"]["email"] ?? ''); ?>
-    <?php html_input("password", "Ton mot de passe", "mot de passe", "password", ''); ?>
-    <button class="btn btn-secondary">Connexion</button>
+    <button class="btn btn-secondary">Valider</button>
 </form>
 
-<div>
-    <a href="pages/mot-de-passe-oublie.php">Mot de passe oublié ?</a>
-</div>
+
 
 <?php
 unset($_SESSION["errors"]);
