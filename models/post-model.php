@@ -56,3 +56,21 @@ function total_posts()
         $stmt = $pdo->query($query);
         return $stmt->fetch();
 }
+
+
+function get_posts_by_user_id(int $id)
+{
+    $pdo = get_pdo();
+    $query = "SELECT id, title, created_at, thumbnail FROM b2024sio.posts WHERE user_id = ? ORDER BY created_at DESC";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$id]);
+    return $stmt->fetchAll();
+}
+
+
+function  delete_post_by_id(int $id) {
+    $pdo = get_pdo();
+    $query = "DELETE FROM b2024sio.posts WHERE id = ?";
+    $stmt = $pdo->prepare($query);
+    return $stmt->execute([$id]);
+}

@@ -34,4 +34,24 @@ function handle_store_post() {
 
 }
 
+
+
+function  handle_delete_post(int $id)
+{
+    $uri = $_SERVER["REQUEST_URI"];
+    require_once dirname(__DIR__) . "/models/post-model.php";
+    $success = delete_post_by_id($id);
+
+    if(!$success) {
+        $_SESSION["error"] = "Une erreur est surevenu";
+        header("Location:$uri");
+        exit();
+    }
+
+    $_SESSION["success"] = "La publication à bien été supprimée";
+    header("Location:$uri");
+    exit();
+
+}
+
 ?>

@@ -24,6 +24,7 @@
                         <?php else : ?>
 
                             <li><a href="pages/profile.php">Profile</a></li>
+                            <li><a href="pages/mes-publications.php">Mes publications</a></li>
                             <form action="services/logout.php" method="POST">
                                 <button class="btn btn-warning" type="submit">Deconnexion</button>
                             </form>
