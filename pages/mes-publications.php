@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                 <td><?= $post["created_at"]?></td>
                 <td class="flex items-center gap-2">
                     <a href="pages/publications/lire.php?id=<?=$post['id']?>" class="btn btn-outline btn-info">Lire</a>
-                    <button class="btn btn-outline btn-warning">Editer</button>
+                    <a href="pages/publications/editer.php?id=<?=$post['id']?>" class="btn btn-outline btn-warning">Editer</a>
                     <form action="" METHOD="post">
                         <input type="hidden" name="id" value="<?=$post['id']?>">
                         <button class="btn btn-outline btn-error">Supprimer</button>
