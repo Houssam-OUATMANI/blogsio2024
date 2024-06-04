@@ -32,3 +32,12 @@ function get_user_info() {
     $stmt = $pdo->query($query);
     return $stmt->fetch();
 }
+
+
+function update_password_by_email(string $email, string $hash)
+{
+    $pdo = get_pdo();
+    $query = "UPDATE b2024sio.users SET password = ? WHERE email = ?";
+    $stmt = $pdo->prepare($query);
+    return $stmt->execute([$hash, $email]);
+}

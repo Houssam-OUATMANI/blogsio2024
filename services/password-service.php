@@ -1,5 +1,7 @@
 <?php
 require_once "../models/token-model.php";
+require_once "../models/user-model.php";
+
 
 
 function  handle_forgot_password() {
@@ -52,5 +54,48 @@ function  handle_forgot_password() {
         header("Location:$current_url");
         exit();
     }
+
+}
+
+
+
+
+function handle_reset_password()
+{
+
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $token = $_POST['token'];
+    $data = get_token($token);
+
+    if(!$data || $data['is_used'] === 1 || $data['email'] !== $email ||  date('Y-m-d H:i:s') > $data['expires_at']) {
+        $_SESSION['error'] = 'Jeton Invalide ou Lien expiré';
+        header('Location:/blog');
+        exit();
+    }
+
+    // Trouve le user de par l'email
+    $user = get_user_by_email($email);
+    if(!$user) {
+            $_SESSION['error'] = 'Jeton Invalide ou Lien expiré';
+            header('Location:/blog');
+            exit();
+    }
+    // Hash le new MDP
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    // Mise à jour
+    $success = update_password_by_email($email, $hash);
+               set_token_to_is_used($token);
+    if(!$success) {
+            $_SESSION['error'] = 'Erreur interne';
+            header('Location:/blog');
+            exit();
+    }
+
+    $_SESSION['success'] = 'Votre mot de passe à bien été mis à jour';
+    header('Location:/blog');
+    exit();
+
 
 }
