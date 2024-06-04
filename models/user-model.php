@@ -25,7 +25,7 @@ function store_user(array $data) {
 }
 
 function get_user_info() {
-    session_start();
+    //session_start();
     $pdo = get_pdo();
     $id = $_SESSION["user"]["id"];
     $query = "SELECT * FROM b2024sio.users WHERE id = $id";
