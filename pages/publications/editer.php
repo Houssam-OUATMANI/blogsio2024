@@ -7,12 +7,21 @@ require_once "../../models/post-model.php";
 
 $id = $_GET['id'];
 $post = get_post_by_id($id);
-
+$connected_user_id = $_SESSION['user']['id'];
 if(!$post) {
     $_SESSION['error'] = "La publication n'est plus disponible";
     header("Location:/blog/pages/404.php");
     exit();
 }
+
+
+if($connected_user_id !== $post['user_id']) {
+    $_SESSION['error'] = "Action Interdite";
+    header("Location:/blog/pages/mes-publications.php");
+    exit();
+}
+
+
 
 ?>
 <?php require_once "../../components/input.php" ;?>
