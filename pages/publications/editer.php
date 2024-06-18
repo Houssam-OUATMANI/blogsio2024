@@ -30,18 +30,19 @@ if($connected_user_id !== $post['user_id']) {
 
 <?php
 $http_method = $_SERVER["REQUEST_METHOD"];
-/*
+
 if($http_method === "POST") {
     require_once "../../services/post-service.php";
-    handle_store_post();
+    handle_update_post();
 
 }
-*/
+
 ?>
 
 
 
 <form class="w-2/3 mx-auto" action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="post_id" value="<?=$post["id"]?>" >
     <?php html_input("text", "Titre", "Titre de l'article", "title",  $post["title"] ?? ''); ?>
     <?php html_input("file", "Miniature", "Miniature", "thumbnail", ''); ?>
     <?php html_input("textarea", "Contenu", "Contenu", "content",  $post["content"] ?? ''); ?>

@@ -74,3 +74,25 @@ function  delete_post_by_id(int $id) {
     $stmt = $pdo->prepare($query);
     return $stmt->execute([$id]);
 }
+
+
+function  update_post_by_id(int $id, array $data)
+{
+    $thumbnail = $data['thumbnail'];
+    if(isset($thumbnail)) {
+        update_post_thumbnail_by_id($id, $thumbnail);
+    }
+
+    $pdo = get_pdo();
+    $query = "UPDATE b2024sio.posts SET title = ?, content = ? WHERE id = ?";
+    $stmt = $pdo->prepare($query);
+    return $stmt->execute([$data['title'], $data['content'], $id]);
+}
+
+function update_post_thumbnail_by_id(int $id, string $thumbnail)
+{
+    $pdo = get_pdo();
+    $query = "UPDATE b2024sio.posts SET thumbnail = ? WHERE id = ?";
+    $stmt = $pdo->prepare($query);
+    return $stmt->execute([$thumbnail, $id]);
+}

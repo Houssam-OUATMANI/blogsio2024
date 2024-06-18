@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                     <a href="pages/publications/editer.php?id=<?=$post['id']?>" class="btn btn-outline btn-warning">Editer</a>
                     <form action="" METHOD="post">
                         <input type="hidden" name="id" value="<?=$post['id']?>">
-                        <button class="btn btn-outline btn-error">Supprimer</button>
+                        <button onclick="return confirm('Etes vous sur de vouloir supp')" class="btn btn-outline btn-error">Supprimer</button>
                     </form>
 
                 </td>
