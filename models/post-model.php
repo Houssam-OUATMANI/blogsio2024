@@ -96,3 +96,15 @@ function update_post_thumbnail_by_id(int $id, string $thumbnail)
     $stmt = $pdo->prepare($query);
     return $stmt->execute([$thumbnail, $id]);
 }
+
+// *** AGG
+
+function get_total_posts_of_today()
+{
+    $pdo = get_pdo();
+    $query = "SELECT COUNT(*) AS total_posts_of_today FROM b2024sio.posts WHERE DATE(created_at) = CURDATE()";
+    $stmt = $pdo->query($query);
+    return $stmt->fetch();
+}
+
+

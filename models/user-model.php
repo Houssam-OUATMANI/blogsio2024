@@ -1,5 +1,5 @@
 <?php
-require_once "../database/connexion.php";
+require_once  dirname(__DIR__) . "/database/connexion.php";
 
 
 function get_user_by_email(string $email) {
@@ -40,4 +40,12 @@ function update_password_by_email(string $email, string $hash)
     $query = "UPDATE b2024sio.users SET password = ? WHERE email = ?";
     $stmt = $pdo->prepare($query);
     return $stmt->execute([$hash, $email]);
+}
+
+function  total_users()
+{
+    $pdo = get_pdo();
+    $query = "SELECT COUNT(*) AS count FROM b2024sio.users";
+    $stmt = $pdo->query($query);
+    return $stmt->fetch();
 }

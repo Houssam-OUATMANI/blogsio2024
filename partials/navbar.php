@@ -22,7 +22,9 @@
                             <li><a href="pages/inscription.php">Inscription</a></li>
                             <li><a href="pages/connexion.php">Connexion</a></li>
                         <?php else : ?>
-
+                            <?php if($_SESSION['user']['role'] === "ADMIN") :?>
+                                <li><a href="pages/dashboard">Tableau de bord</a></li>
+                            <?php endif;?>
                             <li><a href="pages/profile.php">Profile</a></li>
                             <li><a href="pages/mes-publications.php">Mes publications</a></li>
                             <form action="services/logout.php" method="POST">

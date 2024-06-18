@@ -12,7 +12,7 @@ function connexion_validator() {
         $_SESSION["errors"]["email"] = "Le champs email doit etre un email valide";
     }
 
-    if ($_SESSION["errors"]) {
+    if (isset($_SESSION["errors"])) {
         $_SESSION["old"]["email"] = $email;
         return null;
     }
